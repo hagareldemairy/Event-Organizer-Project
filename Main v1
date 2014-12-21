@@ -1,0 +1,181 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pkgfinal.phase;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Hagar Hossam
+ */
+public class Main {
+
+    
+    private int currentUserID;
+
+    public Main() 
+    {
+        currentUserID=0;
+    }
+
+    public Main(int currentUserID) 
+    {
+        this.currentUserID = currentUserID;
+    }
+    
+    void setCurrentUserID(int curretnUserID)
+    {
+        this.currentUserID=curretnUserID;
+    }
+    
+    int getCurrentUserID()
+    {
+        return this.currentUserID;
+    }
+    
+    void createControllers()
+    {
+        
+    }
+    
+    static boolean signIn(User u) throws SQLException
+    {
+        Scanner in= new Scanner (System.in);
+        boolean Signed = false;
+        String dbURL= "jdbc:mysql://localhost/sw";
+        String userName="root";
+        String password="gogo012982@";
+        Connection connection= DriverManager.getConnection(dbURL,userName,password);
+        Statement Stmt= connection.createStatement();
+        System.out.println("Enter your email");
+        u.setEmail(in.nextLine());
+        
+        System.out.println("Enter password");
+        u.setPassword(in.nextLine());
+
+        String sql= ("SELECT email, password FROM user ");
+        ResultSet rs = Stmt.executeQuery(sql);
+        while(rs.next()){
+         //Retrieve by column name
+         String Email = rs.getString("email");
+         String Password = rs.getString("password");
+         System.out.println(Email + Password);
+         if (u.getEmail()== Email  && u.getPassword()==Password ){
+           Signed = true;
+           System.out.println("Signd in");
+         } 
+         else {
+             
+             Signed = false;
+             System.out.println("failed");
+         }
+        }
+        rs.close();
+        return Signed;
+    }
+    
+    
+    static void signUp(User u) throws SQLException
+    {
+        Scanner in= new Scanner (System.in);
+        String dbURL= "jdbc:mysql://localhost/sw";
+        String userName="root";
+        String password="gogo012982@";
+        Connection connection= DriverManager.getConnection(dbURL,userName,password);
+        Statement Stmt= connection.createStatement();
+        System.out.println("Enter first Name");
+        u.setFname(in.nextLine());
+        System.out.println("Enter Last Name");
+        u.setLname(in.nextLine());
+        System.out.println("Enter Email");
+        u.setEmail(in.nextLine());
+        System.out.println("Enter password");
+        u.setPassword(in.nextLine());
+        int rows=  Stmt.executeUpdate("INSERT INTO user VALUES ('"+ u.fname+"','"+ u.lname+"','"+ u.email+"','"+u.password+"')");
+    }
+
+    static void createEvent(Event e) throws SQLException
+    {
+        Scanner in= new Scanner (System.in);
+        String dbURL= "jdbc:mysql://localhost/sw";
+        String userName="root";
+        String password="gogo012982@";
+        Connection connection= DriverManager.getConnection(dbURL,userName,password);
+        Statement Stmt= connection.createStatement();
+        System.out.println("Enter Event Name");
+        e.setName(in.nextLine());
+        System.out.println("Enter Event description");
+        e.setDescription(in.nextLine());
+        System.out.println("Enter day of event");
+        e.setDay(in.nextLine());
+        System.out.println("Enter Start time of event");
+        e.setStartTime(in.nextLine());
+        System.out.println("Enter End time of event");
+        e.setEndTime(in.nextLine());
+        int rows=  Stmt.executeUpdate("INSERT INTO event VALUES ('"+ e.getName()+"','"+ e.getDescription()+"','"+ e.getDay()+"','"+e.getStartTime()+"','"+ e.getendTime()+"')");
+    }
+    
+    static void deleteEvent(Event e) throws SQLException
+    {
+        Scanner in= new Scanner (System.in);
+        String dbURL= "jdbc:mysql://localhost/sw";
+        String userName="root";
+        String password="gogo012982@";
+        Connection connection= DriverManager.getConnection(dbURL,userName,password);
+        Statement Stmt= connection.createStatement();
+        System.out.println("Enter Event Name");
+        e.setName(in.nextLine());
+        int rows=  Stmt.executeUpdate("DELETE FROM event WHERE e.setName == e.Name ");
+    }
+    void logOut()
+    {
+    
+    }
+    
+    void intMainView()
+    {
+        
+    }
+    
+    
+    
+    public static void main(String[] args) throws SQLException {
+        
+        Scanner in= new Scanner (System.in);    
+        User u= new User(0,null,null,null,null,null,null,null);
+        Event e = new Event (0,null,null, null, null, null, null, null, null, 0);
+        int menu;
+            System.out.println("Please select from the menu\n"
+                    + "1- Sign Up\n"
+                    + "2- Sign In\n"
+                    + "3- Create event\n"
+                    + "4- Delete event");
+            menu= in.nextInt();
+            switch (menu){
+                
+            case 1:
+
+                signUp (u);
+                break;
+            case 2:
+                signIn(u);
+                break;
+            case 3:
+                createEvent(e);
+            case 4:
+                deleteEvent(e);
+                
+            }
+        }
+    
+    }
+    
