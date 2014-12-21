@@ -1,0 +1,154 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pkgfinal.phase;
+import java.sql.Time;
+import java.util.Date;
+/**
+ *
+ * @author Hagar Hossam
+ */
+public class Event {
+    private int eventID;
+    private String Name;
+    private String Description;
+    private EventCategory category;
+	private String Location;
+	private String day;
+        private Date creationDate;
+	private String startTime;
+	private  String endTime;
+	private int numberOfTickets;
+
+    public Event() 
+    {
+        eventID=0;
+	Name="";
+	Description="";
+	category=null;
+	Location="";
+	day=null;
+        creationDate=null;
+	startTime= null;
+	endTime= null;
+	numberOfTickets=0;
+    }
+
+    public Event(int eventID, String Name, String Description, EventCategory category, String Location, String day, Date creationDate, String startTime, String endTime, int numberOfTickets) {
+        this.eventID = eventID;
+        this.Name = Name;
+        this.Description = Description;
+        this.category = category;
+        this.Location = Location;
+        this.day = day;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.numberOfTickets = numberOfTickets;
+        this.creationDate=creationDate;
+    }
+    
+    void setEventID(int eventID)
+    {
+        this.eventID = eventID;
+    }
+ 
+    int getEventID()
+    {
+        return this.eventID;
+    }
+    
+    
+    void setName(String Name)
+    {
+        this.Name = Name;
+    }
+ 
+    String getName()
+    {
+        return this.Name;
+    }
+    
+    
+    void setDescription(String Description)
+    {
+        this.Description = Description;
+    }
+ 
+    String getDescription()
+    {
+        return this.Description;
+    }
+    
+    void setCategory(EventCategory Category)
+    {
+        this.category = Category;
+    }
+ 
+    EventCategory getCategory()
+    {
+        return this.category;
+    }
+    
+    void setLocation (String Location)
+    {
+     this.Location=Location;
+    }
+    String getlocation()
+    {
+        return this.Location;
+    }
+    
+    void setDay(String day)
+    {
+        this.day = day;
+    }
+    
+    String getDay()
+    {
+        return this.day;
+    }
+    
+    void setStartTime(String startTime)
+    {
+        this.startTime = startTime;
+    }
+    
+    String getStartTime()
+    {
+        return this.startTime;
+    }
+    
+    
+    void setEndTime(String endTime)
+    {
+        this.endTime = endTime;
+    }
+    
+    String getendTime()
+    {
+        return this.endTime;
+    }
+    
+    
+    void setNumberOfTickets(int numberOfTickets)
+    {
+        this.numberOfTickets = numberOfTickets;  
+    }
+    
+    int getNumberOfTickets()
+    {
+        return this.numberOfTickets;
+    }
+    
+    void setCreationDate(Date creationDate)
+    {
+        this.creationDate=creationDate;
+    }
+    
+    Date getCreationDate()
+    {
+        return this.creationDate;
+    }
+}
