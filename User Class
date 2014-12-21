@@ -1,0 +1,120 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pkgfinal.phase;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Hagar Hossam
+ */
+class User {
+
+        private int userID;
+	private ArrayList <EventCategory> interests;
+	private ArrayList <Ticket> MyTickets;
+	private ArrayList <Notification> notifications;
+        public String fname = "";
+        public String lname;
+        public String email;
+        public String password;
+
+    public User(int userID, ArrayList<EventCategory> interests, ArrayList<Ticket> MyTickets, ArrayList<Notification> notifications, String fname, String lname, String email, String password) {
+        this.userID = userID;
+        this.interests = interests;
+        this.MyTickets = MyTickets;
+        this.notifications = notifications;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.password = password;
+    }
+        
+        
+
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public User() 
+    {
+        userID=0;
+        this.notifications = new ArrayList();
+        this.MyTickets = new ArrayList();
+        this.interests = new ArrayList<EventCategory>();
+    }
+
+    
+    void setUserID(int userID)
+    {
+        this.userID=userID;
+    }
+    
+    int getUserID()
+    {
+        return this.userID;
+    }
+    
+    void setInterests(ArrayList<EventCategory> interests)
+    {
+        this.interests = interests;
+    }
+    
+    ArrayList<EventCategory> getInterests()
+    {
+        return this.interests;
+    }
+    
+    void setMyTickets(ArrayList<Ticket> MyTickets)
+    {
+        this.MyTickets=MyTickets;
+    }
+    
+    ArrayList<Ticket> getMyTickets()
+    {
+        return this.MyTickets;
+    }
+    
+    void setNotifications(ArrayList<Notification> notifications)
+    {
+        this.notifications =notifications;
+    }
+    
+    ArrayList<Notification> getNotifications()
+    {
+        return this.notifications;
+    }
+   
+}
